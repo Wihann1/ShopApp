@@ -302,32 +302,34 @@ class _AuthCardState extends State<AuthCard>
                 if (_isLoading)
                   const CircularProgressIndicator()
                 else
-                  RaisedButton(
-                    onPressed: _submit,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).primaryTextTheme.button!.color,
-                    child:
-                        Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
-                  ),
+                  ElevatedButton(
+                      onPressed: _submit,
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30.0, vertical: 8.0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          primary: Theme.of(context).primaryColor,
+                          onPrimary:
+                              Theme.of(context).primaryTextTheme.button!.color),
+                      child: Text(
+                          _authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP')),
                 const SizedBox(
                   height: 10,
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: _switchAuthMode,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).colorScheme.secondary,
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 8),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    primary: Theme.of(context).colorScheme.secondary,
+                  ),
                   child: Text(
                     '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD',
                     style: const TextStyle(fontSize: 8),
                   ),
-                ),
+                )
               ],
             ),
           ),
